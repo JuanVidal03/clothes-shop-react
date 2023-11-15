@@ -1,0 +1,29 @@
+.whiteButton{
+    border: solid 2px #fff;
+    color: #000;
+    background-color: #fff;
+}
+.whiteButton:hover{
+    background-color: transparent;
+    color: #fff;
+}
+.purpleButton{
+    background-color: rebeccapurple;
+    color: #fff;
+    border: solid 2px #663399;
+}
+.purpleButton:hover{
+    color: rebeccapurple;
+    background-color: #fff;
+}
+.log-out-btn{
+    background-color: rebeccapurple;
+    border-radius: 50px;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    transition: all ease-in .3s;
+}
+.log-out-btn:hover{
+    box-shadow: 0px 0px 30px #00000085;
+}
