@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home/Home.jsx';
 import ProductDetail from './pages/ProductDetail/ProductDetail.jsx';
 import Login from './pages/LogIn/Login.jsx';
+import Products from './pages/products/Products.jsx';
 //import dependencies
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ function App() {
       { path: "/", element: <Home /> },
       { path:"/product/:id", element:<ProductDetail/> },
       { path:"/login", element:<Login/> },
+      { path:"/products", element:<Products/> },
     ])
 
     return router;

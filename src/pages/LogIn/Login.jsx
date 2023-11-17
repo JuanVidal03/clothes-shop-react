@@ -4,6 +4,9 @@ import "./logIn.css";
 import LogInForm from "../../components/logInForm/LogInForm.jsx";
 
 const Login = () => {
+
+    document.title = 'Ingresa | Juan Vidal';
+
     return (
         <div className="login-container">
             <div className="login-form-back"></div>

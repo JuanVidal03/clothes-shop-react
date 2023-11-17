@@ -1,0 +1,25 @@
+.categories-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem 0;
+}
+.category p{
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.3rem;
+    font-family: 'Cormorant', serif;
+    text-transform: uppercase;
+    position: relative;
+}
+.active::after{
+    position: absolute;
+    content: "";
+    background-color: #000;
+    top: 105%;
+    width: 100%;
+    height: 2px;
+    left: 0;
+}

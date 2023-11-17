@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import "./productDetail.css";
 // import dependecies
 import { useParams } from "react-router-dom";
-import axios from "axios";
 // import components
 import PurpleButton from "../../components/buttons/purpelButton.jsx";
 import Loader from "../../components/loader/Loader.jsx";
 // import layout
 import LoggedLayout from "../../layouts/LoggedLayout.jsx";
+// import services
+import { getSingleProduct } from "../../services/apiActions.js";
 
 const ProductDetail = () => {
 
@@ -26,8 +27,8 @@ const ProductDetail = () => {
         try {
             // render single product
             const renderProduct = async () => {
-                const product = await axios.get(`https://fakestoreapi.com/products/${id}`);
-                setProduct(product.data);
+                const product = await getSingleProduct(id)
+                setProduct(product);
                 setLoading(false);
                 // update title website
                 document.title = `${product.data.title} | Juan Vidal`;

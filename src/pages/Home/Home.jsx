@@ -7,9 +7,11 @@ import "./home.css";
 // import react hook
 import { useEffect, useState } from "react";
 // import dependencies
-import axios from "axios";
+
 // import layout
 import LoggedLayout from "../../layouts/LoggedLayout.jsx";
+// import services
+import { getAllProducts } from "../../services/apiActions.js";
 
 const Home = () => {
   // update website title
@@ -27,9 +29,9 @@ const Home = () => {
     // function that render teh api data
     const renderData = async () => {
       try {
-        const res = await axios.get('https://fakestoreapi.com/products');
+        const data = await getAllProducts();
         setLoading(false);
-        setProducts(res.data);
+        setProducts(data);
 
       } catch (error) {
         console.log(error);
