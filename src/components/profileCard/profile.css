@@ -1,0 +1,44 @@
+.propfile-card{
+  background-color: #fff;
+  position: absolute;
+  top: 100%;
+  right: 10%;
+  width: 200px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 3;
+  transition: all ease .3s;
+  box-shadow: 0px 30px 20px 10px #00000028;
+}
+.profile-card-img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card-img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+.show{
+  opacity: 1;
+  visibility: visible;
+}
+.profile-card-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-card-info p{
+  color: #b8b5b5;
+}
