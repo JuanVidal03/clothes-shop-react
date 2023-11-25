@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 350px;
+    padding: 2rem 1rem;
     width: 300px;
     flex-direction: column;
     gap: 35px;
@@ -91,4 +91,9 @@
 .enter:hover {
     background-color: rgb(0, 0, 0);
     color: white;
+}
+.form-errors{
+    margin-top: 1rem;
+    color: rebeccapurple;
+    font-weight: 700;
 }

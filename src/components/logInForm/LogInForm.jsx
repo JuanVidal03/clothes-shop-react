@@ -2,33 +2,67 @@
 import './logInForm.css'
 // import dependecies
 import { useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 const LogInForm = () => {
 
-    // redirect to the home page
     const navigate = useNavigate();
-    const handleSubmit = () => {
-        navigate('/');
-    }
 
     return (
         <div className="form-container">
-            <form onSubmit={handleSubmit}>
-                <div className="card">
-                    <p className="login">¡Bienvenido de nuevo!</p>
-                    <div className="inputBox">
-                        <input type="text" required="required" />
-                        <span className="user">Usuario</span>
-                    </div>
+            <Formik
+                initialValues={{
+                    user: '',
+                    pass: ''
+                }}
+                onSubmit={() => {
+                    navigate('/');
+                }}
+                validate={(values) => {
+                    const errors = {};
+                    // username validation
+                    if (!values.user) {
+                        errors.user = 'Debes ingresar un nombre de usuario.';
+                    } else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(values.user)){
+                        errors.user = 'El usuario solo debe tener letras y espacios.';
+                    }
+                    // pass valdiation
+                    if (!values.pass) errors.pass = 'Debes ingresar la contraseña.';
+                    return errors;
+                }}
+            >
+                {({ touched, errors}) => (
 
-                    <div className="inputBox">
-                        <input type="password" required="required" />
-                        <span>Contraseña</span>
-                    </div>
+                    <Form>
+                        <div className="card">
+                            <p className="login">¡Bienvenido de nuevo!</p>
+                            <div className="inputBox">
+                                <Field 
+                                    type="text"
+                                    id='user' 
+                                    name='user'/>
+                                <span className="user">Usuario</span>
+                                <ErrorMessage name='user' component={() => (
+                                    <div className='form-errors'>{errors.user}</div>
+                                )}/>
+                            </div>
 
-                    <button className="enter">Ingresar</button>
-                </div>
-            </form>
+                            <div className="inputBox">
+                                <Field 
+                                    type="password" 
+                                    name='pass' 
+                                    id='pass'/>
+                                <span>Contraseña</span>
+                                <ErrorMessage name='pass' component={() => (
+                                    <div className='form-errors'>{errors.pass}</div>
+                                )}/>
+                            </div>
+
+                            <button className="enter" type='submit'>Ingresar</button>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
         </div>
     );
 }

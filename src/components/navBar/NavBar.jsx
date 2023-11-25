@@ -30,9 +30,6 @@ const NavBar = () => {
                         <li className="menu-item">
                             <Link to="/products">Productos</Link>
                         </li>
-                        <li className="menu-item">
-                            <Link to="/contacto">Contacto</Link>
-                        </li>
                     </div>
                     <div className="second-row-nav">
                         <div
