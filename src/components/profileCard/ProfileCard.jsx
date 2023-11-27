@@ -19,7 +19,7 @@ const ProfileCard = () => {
         </figure>
         <div className="profile-card-info">
           <h6>Juan Vidal</h6>
-          <p>Customer</p>
+          <p>Cliente</p>
         </div>
         <div></div>
       </div>

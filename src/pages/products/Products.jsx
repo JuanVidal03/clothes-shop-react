@@ -5,14 +5,12 @@ import { useState, useEffect, } from "react";
 // import components
 import LoggedLayout from "../../layouts/LoggedLayout.jsx";
 import ProductCard from "../../components/productCard/productCard.jsx";
-
 // import services
 import {
     getCategories,
     getProductsByCategory,
     getAllProducts,
 } from "../../services/apiActions.js";
-
 
 const Products = () => {
 
@@ -23,7 +21,7 @@ const Products = () => {
     // render products
     const [products, setProducts] = useState([]);
 
-    // all products
+    // rendering all products
     useEffect(() => {
         const allProducts = async () => {
             const data = await getAllProducts();
@@ -31,24 +29,6 @@ const Products = () => {
         };
         allProducts();
     }, []);
-
-    // add styles to active item
-    const clickEvent = (e) => {
-
-        const p = e.target;
-        const activeP = p.innerText;
-        setSlectCat(activeP);
-        const categoriesP = document.querySelectorAll(".category p");
-
-        categoriesP.forEach((cat) => {
-            if (cat.innerText == activeP) {
-                p.classList.add("active");
-            } else {
-                cat.classList.remove("active");
-            }
-        });
-
-    };
 
     // rendering products depending the category name
     useEffect(() => {
@@ -69,12 +49,31 @@ const Products = () => {
         renderProductsByCategory();
     }, []);
 
-/*
-    - falta autenticar formularios con formik
-    - hacer que funione el filtro de productos
-    - usar context para pasar los datos del login al nav
-*/
+    // manage click events
+    const clickEvent = (e) => {
 
+        // add styles to clicked link
+        const p = e.target;
+        const activeP = p.innerText;
+        setSlectCat(activeP);
+        const categoriesP = document.querySelectorAll(".category p");
+
+        categoriesP.forEach((cat) => {
+            if (cat.innerText == activeP) {
+                p.classList.add("active");
+            } else {
+                cat.classList.remove("active");
+            }
+        });
+
+        // change url to render new content
+        const urlHref = new URL(window.location.href); // get the url
+        const activeLink = p.innerText.toLowerCase(); // get teh active link in loweCase
+        urlHref.searchParams.set('category', activeLink); // set the query param
+        console.log(urlHref.href);
+        // window.location.search = urlHref.search; // updating url, se recarga la página
+
+    };
 
     // render categories names
     useEffect(() => {
