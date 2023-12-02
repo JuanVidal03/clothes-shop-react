@@ -4,13 +4,17 @@ import './App.css'
 import PublicRoutes from './routes/Public.routes.jsx';
 //import dependencies
 import { BrowserRouter } from 'react-router-dom';
+// import usename context
+import ProfileNameProvider from './context/ProfileNameContext.jsx';
 
 const App = () => {
 
   return (
-    <BrowserRouter>
-      <PublicRoutes/>
-    </BrowserRouter>
+    <ProfileNameProvider>
+      <BrowserRouter>
+        <PublicRoutes/>
+      </BrowserRouter>
+    </ProfileNameProvider>
   );
 
 }

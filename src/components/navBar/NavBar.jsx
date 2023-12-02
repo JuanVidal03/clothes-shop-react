@@ -12,12 +12,14 @@ import ProfileCard from "../profileCard/ProfileCard.jsx";
 import { useContext } from "react";
 // import context
 import { ProfileCardCon } from "../../context/ProfileCardContext.jsx";
+import { ProfileNameContext } from "../../context/ProfileNameContext.jsx";
 //import image
 import profileImage from '../../img/profile-img.jpeg';
 
 const NavBar = () => {
 
     const profileContext = useContext(ProfileCardCon);
+    const profileNameContext = useContext(ProfileNameContext);
 
     return (
         <header className="header">
@@ -38,7 +40,7 @@ const NavBar = () => {
                         onMouseLeave={profileContext.handleHoverProfileCardHidden}>
                             {/* <FontAwesomeIcon className="profile-icon" icon={faUser} /> */}
                             <img src={profileImage} className="nav-profile-img" alt="" />
-                            <span>Juan Vidal</span>
+                            <span>{profileNameContext.userName}</span>
                             <ProfileCard/>
                         </div>
                         <div className="logout">

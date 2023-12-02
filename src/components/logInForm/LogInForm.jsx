@@ -3,10 +3,15 @@ import './logInForm.css'
 // import dependecies
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from "formik";
+// import context
+import { useContext } from 'react';
+import { ProfileNameContext } from '../../context/ProfileNameContext';
 
 const LogInForm = () => {
 
     const navigate = useNavigate();
+    // use context
+    const profileNameContext = useContext(ProfileNameContext);
 
     return (
         <div className="form-container">
@@ -15,7 +20,8 @@ const LogInForm = () => {
                     user: '',
                     pass: ''
                 }}
-                onSubmit={() => {
+                onSubmit={(values) => {
+                    profileNameContext.setUserName(values.user);
                     navigate('/');
                 }}
                 validate={(values) => {

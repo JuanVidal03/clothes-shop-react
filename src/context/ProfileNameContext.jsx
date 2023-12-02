@@ -1,11 +1,22 @@
+// import react hooks
+import { createContext, useState } from "react";
+// creating a context
+export const ProfileNameContext = createContext();
 
+const ProfileNameProvider = ({children}) => {
 
-const ProfileNameContext = () => {
+  // state that get the user name from login form
+  const [userName, setUserName] = useState('');
+
   return (
-    <div>
-      
-    </div>
+    <ProfileNameContext.Provider
+      value={{
+        setUserName,
+        userName
+      }}>
+      {children}
+    </ProfileNameContext.Provider>
   );
 }
 
-export default ProfileNameContext;
+export default ProfileNameProvider;
